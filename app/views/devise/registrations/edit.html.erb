@@ -1,11 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1>Edit <%= resource_name.to_s.humanize %></h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <h2>プロフィール</h2>
 
   <div class="field">
+    <%= f.label "ユーザーID" %><br />
+    <%= f.text_field :userid, autocomplete: "userid" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "ユーザー名" %><br />
+    <%= f.text_field :username, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "お気に入りの台" %><br />
+    <%= f.text_field :favorite, autocomplete: "favorite" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "自己紹介" %><br />
+    <%= f.text_area :about, autocomplete: "about" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "完了" %>
+  </div>
+
+  <h2>セキュリティ</h2>
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,18 +52,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "完了" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<h2>退会</h2>
+
+<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会しますか？(データがすべて削除されます。)" }, method: :delete %></p>

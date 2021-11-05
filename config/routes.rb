@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'profiles/show'
   devise_for :users, controllers: {
       :confirmations => 'users/confirmations',
+      registrations: "users/registrations",
   }
 
   devise_scope :user do

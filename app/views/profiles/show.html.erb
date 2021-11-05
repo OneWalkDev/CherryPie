@@ -1,22 +1,40 @@
 <div class="form-wrap">
   <div class="form-group">
     <div class="schedule-item">
-      <div class="schedule-item-header text-left">
-        <p class="bold">ユーザー名</p>
-      </div>
       <div class="schedule-item-body text-left">
-        <p><%= @user.username %></p>
+        <h1><%= @user.username %></h1><p>@<%= @user.userid %></p>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="schedule-item">
-      <div class="schedule-item-header text-left">
-        <p class="bold">ID</p>
-      </div>
       <div class="schedule-item-body text-left">
-        <p><%= @user.userid %></p>
+        <p>お気に入りの台 : <%= @user.favorite %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-body text-left">
+        <p>自己紹介 : <%= @user.about %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-body text-left">
+        <p>フォロー中 : <%= @user.followings_list.count %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-body text-left">
+        <p>フォロワー : <%= @user.followers_list.count %></p>
       </div>
     </div>
   </div>

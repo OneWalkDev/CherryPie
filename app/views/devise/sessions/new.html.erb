@@ -1,26 +1,22 @@
-<h2>Log in</h2>
+<%= stylesheet_link_tag 'devise/sessions/new', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<main class="text-center form-signin">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <h1 class="h3 mb-3 fw-normal">サインイン</h1>
+    <label for="inputEmail" class="visually-hidden">Email address</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "Email"%>
+    <label for="inputPassword" class="visually-hidden">Password</label>
+    <%= f.password_field :password, autocomplete: "current-password", id: "inputPassword", class: "form-control", placeholder: "Password"%>
+    <div class="checkbox mb-3">
+      <label>
+        <%= f.check_box :remember_me %> パスワードを記憶する
+      </label>
     </div>
+    <%= f.submit "サインイン", class:"w-100 btn btn-lg btn-primary"%>
   <% end %>
+  <%= render "devise/shared/links" %>
+</main>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+

@@ -15,6 +15,14 @@ class User < ApplicationRecord
             length: { minimum: 5, maximum: 20 },
             allow_nil: true
 
+  validates :favorite,
+            length: { minimum: 0, maximum: 40 },
+            allow_nil: true
+
+  validates :about,
+            length: { minimum: 0, maximum: 150 },
+            allow_nil: true
+
   # アソシエーションの定義
   # フォローしている側のユーザー (active relationship)
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -40,9 +48,17 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id)
   end
 
+  def followers_list
+    followers
+  end
+
+  def followings_list
+    followings
+  end
+
   # 友達（互いにフォローしている）をデータベースから取得
   def matchers
-    followings
+    followings & followers
   end
 
   # 相手と友達になっていればtrueを返す

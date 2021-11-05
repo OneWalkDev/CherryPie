@@ -1,2 +1,21 @@
 <h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<p>ようこそ！</p>
+<% if current_user.sign_in_count == 7%>
+  <p><%= current_user.sign_in_count %>回目のログインです！</p>
+  <p>今日は勝てるかも！</p>
+<% end %>
+
+<% if current_user.sign_in_count == 77%>
+  <p><%= current_user.sign_in_count %>回目のログインです！</p>
+  <p>!!SUPER LUCKY!!</p>
+<% end %>
+
+<% if current_user.sign_in_count == 777%>
+  <p><%= current_user.sign_in_count %>回目のログインです！</p>
+  <p>GOGO!! Parlor!!</p>
+<% end %>
+
+<% if current_user.sign_in_count > 777%>
+  <p><%= current_user.sign_in_count %>回目のログインです！</p>
+  <p>いつもありがとうございます！</p>
+<% end %>
