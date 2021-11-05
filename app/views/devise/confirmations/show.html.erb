@@ -1,4 +1,4 @@
-<h2><%= "パスワードの登録" %></h2>
+<h2><%= "本登録" %></h2>
 
 <%= form_for(resource, as: resource_name, url: users_confirm_path) do |f| %>
   <%= devise_error_messages! %>
@@ -19,6 +19,11 @@
   <div class="field">
     <%= f.label "ユーザーネーム" %><br />
     <%= f.text_field :username, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "ユーザーID(半角英数字)" %><br />
+    <%= f.text_field :userid, autocomplete: "off" %>
   </div>
 
   <%= f.hidden_field :confirmation_token %>

@@ -1,0 +1,63 @@
+<div class="form-wrap">
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-header text-left">
+        <p class="bold">ユーザー名</p>
+      </div>
+      <div class="schedule-item-body text-left">
+        <p><%= @user.username %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-header text-left">
+        <p class="bold">ID</p>
+      </div>
+      <div class="schedule-item-body text-left">
+        <p><%= @user.userid %></p>
+      </div>
+    </div>
+  </div>
+
+  <% if @user.follow_request?(current_user, @user) %>
+    <div class="form-group">
+      <div class="schedule-item">
+        <div class="schedule-item-header text-left">
+          <p class="bold">フォローされています</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.matchers?(@user) %>
+    <div class="form-group">
+      <div class="schedule-item">
+        <div class="schedule-item-header text-left">
+          <p class="bold">相互フォローです</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.id == @user.id %>
+
+  <% else %>
+    <% unless current_user.following?(@user) %>
+      <div class="actions">
+        <%= link_to 'フォローする', profile_relationships_path(@user.userid), method: :post, class:"sign-up-btn" %>
+      </div>
+    <% else %>
+      <div class="actions">
+        <%= link_to 'フォローを解除する',  profile_relationship_path(@user.userid), method: :delete, class:"sign-up-btn" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if current_user.id == @user.id %>
+    <div class="actions">
+      <%= link_to 'プロフィールを編集する', edit_user_registration_path, class:"sign-up-btn" %>
+    </div>
+  <% end %>
+</div>
