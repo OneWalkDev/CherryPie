@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+      :confirmations => 'users/confirmations',
+  }
+  devise_scope :user do
+    patch "users/confirm" => "users/confirmations#confirm"
+  end
   resources :pages
 
   get "/"=>'tops#index'
