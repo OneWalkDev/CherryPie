@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'expenses/index'
+  get 'expenses/create'
+  get 'expenses/destroy'
+  get 'expenses/show'
   get 'profiles/index'
   get 'profiles/show'
   devise_for :users, controllers: {

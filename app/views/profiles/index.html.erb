@@ -32,7 +32,7 @@
 
   <div class="item-list-content">
     <ul>
-      <% @users.shuffle.first(10).each do |user| %>
+      <% @users.shuffle.first(5).each do |user| %>
         <% unless current_user.id == user.id %>
           <% unless current_user.following?(user) %>
             <div class="each-item">
