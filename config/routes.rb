@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   resources :pages
 
   resources :expenses
-  resources :profiles, only: [:index, :show] do
+  resources :profiles , only:[:index,:show] do
     resources :relationships, only: [:create, :destroy]
   end
 
   get "/"=>'tops#index'
   get "/about"=>'tops#about'
+  get "profile/search"=>"profiles#search"
 
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

@@ -2,12 +2,13 @@
 
   <p>ユーザーを検索</p>
   <nav class="navbar">
-    <form class="container-fluid">
+      <%= form_with url: profile_search_path,:method => 'get',class: "container-fluid" do |f| %>
       <div class="input-group">
         <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <%= f.text_field :name, class: "form-control",placeholder: "UserName",aria: {label:"Username",describedby: "basic-addon1"}%>
+        <!--<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">-->
       </div>
-    </form>
+        <% end %>
   </nav>
 
   <div class="item-list-header">
