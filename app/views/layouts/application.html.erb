@@ -33,17 +33,20 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to current_user.username, profile_path(id: current_user.userid), class: "nav-link" %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= current_user.username %>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li> <%= link_to "マイページ", profile_path(id: current_user.userid), class: "dropdown-item" %></li>
+                    <li> <%= link_to 'サインアウト', destroy_user_session_path, class: "dropdown-item", method: :delete %></li>
+                  </ul>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '収支管理', profiles_path, class: "nav-link" %>
+                  <%= link_to '収支管理', expenses_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'フレンド', profiles_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'サインアウト', destroy_user_session_path, class: "nav-link", method: :delete %>
                 </li>
               <% else %>
                 <li class="nav-item">

@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'expenses/index'
-  get 'expenses/create'
-  get 'expenses/destroy'
-  get 'expenses/show'
-  get 'profiles/index'
-  get 'profiles/show'
+
   devise_for :users, controllers: {
       :confirmations => 'users/confirmations',
       registrations: "users/registrations",
@@ -15,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :pages
+
+  resources :expenses
   resources :profiles, only: [:index, :show] do
     resources :relationships, only: [:create, :destroy]
   end
