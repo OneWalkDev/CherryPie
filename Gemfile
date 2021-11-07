@@ -70,6 +70,8 @@ gem 'omniauth'
 
 gem 'cancancan'
 
+gem 'rails_admin'
+
 gem 'carrierwave'
 
 gem 'mini_magick'
